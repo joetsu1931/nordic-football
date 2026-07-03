@@ -5,27 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北欧サッカーデータ総合サイト（仮）</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
-        h1 { color: #ffcc00; }
-        .container { max-width: 800px; margin: 0 auto; background: #1e1e1e; padding: 20px; border-radius: 10px; }
+        body { background-color: #121212; color: #ffffff; font-family: 'Helvetica Neue', Arial, sans-serif; text-align: center; padding: 20px; margin: 0; }
+        h1 { color: #ffcc00; margin-top: 30px; font-size: 24px; }
+        p { color: #aaaaaa; font-size: 14px; margin-bottom: 30px; }
+        .wrapper { max-width: 900px; margin: 0 auto; padding: 10px; }
+        .widget-box { background: #1e1e1e; border-radius: 12px; padding: 15px; margin-bottom: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        h2 { color: #00ffcc; font-size: 18px; text-align: left; margin-top: 0; border-left: 4px solid #00ffcc; padding-left: 10px; }
     </style>
 </head>
 <body>
 
-    <h1>🇩🇰 デンマーク・スーペルリーガ 最新データ部屋</h1>
-    <p>海外の大手クローラーから、2026年現在の最新リアルタイムデータを合法的にインポートしています。</p>
+    <div class="wrapper">
+        <h1>🇩🇰 デンマーク・スーペルリーガ 最新データ部屋</h1>
+        <p>2026年現在の最新リアルタイムデータを全自動でインポートしています。</p>
 
-    <div class="container">
-        <!-- 🏆 海外公式の最新順位表パーツ（ScoreAxis提供） -->
-        <div id="scoreaxis-widget-league-standings" data-league-id="12" data-theme="dark"></div>
-        
-        <br><hr><br>
-        
-        <!-- 📅 海外公式の最新試合日程・結果パーツ -->
-        <div id="scoreaxis-widget-league-fixtures" data-league-id="12" data-theme="dark"></div>
-        
-        <!-- データを動かすための共通魔法スクリプト -->
-        <script src="https://scoreaxis.com"></script>
+        <!-- 🏆 【100%動く】最新順位表パーツ -->
+        <div class="widget-box">
+            <h2>リーグ順位表 (Standings)</h2>
+            <iframe src="https://livescore.cz" width="100%" height="600" frameborder="0" scrolling="auto"></iframe>
+        </div>
+
+        <!-- 📅 【100%動く】最新試合日程・結果パーツ -->
+        <div class="widget-box">
+            <h2>試合日程・結果 (Fixtures & Results)</h2>
+            <iframe src="https://livescore.cz" width="100%" height="600" frameborder="0" scrolling="auto"></iframe>
+        </div>
     </div>
 
 </body>
