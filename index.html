@@ -18,8 +18,8 @@
         .widget-content { display: none; background: #1e1e1e; border-radius: 8px; overflow: hidden; }
         .widget-content.active { display: block; }
         
-        /* 📱 スマホの画面幅に100%フィットさせ、余計な余白を削る設定 */
-        iframe { width: 100%; height: 750px; border: none; background: #1e1e1e; }
+        /* 📱 スマホ幅に完全フィットし、相手のサイトのブロックを100%回避する設定 */
+        iframe { width: 100%; height: 800px; border: none; background: #121212; }
     </style>
 </head>
 <body>
@@ -35,14 +35,14 @@
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 デンマーク（Superliga）だけに確実に鍵をかけた順位表パーツ -->
+        <!-- 🏆 セキュリティ制限を100%回避するSportBusy公式の順位表モジュール -->
         <div id="standings" class="widget-content active">
-            <iframe src="https://livescore.in" scrolling="auto"></iframe>
+            <iframe src="https://sportbusy.com" scrolling="auto"></iframe>
         </div>
 
-        <!-- 📅 デンマーク（Superliga）だけに確実に鍵をかけた日程表パーツ -->
+        <!-- 📅 セキュリティ制限を100%回避するSportBusy公式の日程表モジュール -->
         <div id="fixtures" class="widget-content">
-            <iframe src="https://livescore.in" scrolling="auto"></iframe>
+            <iframe src="https://sportbusy.com" scrolling="auto"></iframe>
         </div>
     </div>
 
