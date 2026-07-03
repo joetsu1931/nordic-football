@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>北欧サッカーデータ総合サイト（仮）</title>
+    <style>
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; text-align: center; padding: 20px; }
+        h1 { color: #ffcc00; }
+        .container { max-width: 800px; margin: 0 auto; background: #1e1e1e; padding: 20px; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>🇩🇰 デンマーク・スーペルリーガ 最新データ部屋</h1>
+    <p>海外の大手クローラーから、2026年現在の最新リアルタイムデータを合法的にインポートしています。</p>
+
+    <div class="container">
+        <!-- 🏆 海外公式の最新順位表パーツ（ScoreAxis提供） -->
+        <div id="scoreaxis-widget-league-standings" data-league-id="12" data-theme="dark"></div>
+        
+        <br><hr><br>
+        
+        <!-- 📅 海外公式の最新試合日程・結果パーツ -->
+        <div id="scoreaxis-widget-league-fixtures" data-league-id="12" data-theme="dark"></div>
+        
+        <!-- データを動かすための共通魔法スクリプト -->
+        <script src="https://scoreaxis.com"></script>
+    </div>
+
+</body>
+</html>
