@@ -2,70 +2,54 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>北欧サッカーデータ総合サイト（仮）</title>
     <style>
-        /* 📱 画面全体のスタイリッシュな黒基調ベース */
-        body { background-color: #121212; color: #ffffff; font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; text-align: center; }
+        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Hiragino Kaku Gothic ProN, subaru, sans-serif; margin: 0; padding: 0; }
+        .header { background: #1f1f1f; padding: 15px 10px; text-align: center; border-bottom: 2px solid #ffcc00; }
+        h1 { color: #ffcc00; margin: 0; font-size: 18px; font-weight: bold; }
+        p { color: #888888; margin: 3px 0 0 0; font-size: 11px; }
         
-        /* 🏰 ヘッダー部分のデザイン */
-        .header { background: #1e1e1e; padding: 20px 10px; border-bottom: 3px solid #ffcc00; }
-        h1 { color: #ffcc00; margin: 0 0 5px 0; font-size: 22px; }
-        p { color: #aaaaaa; margin: 0; font-size: 13px; }
+        .tab-menu { display: flex; background: #1f1f1f; border-bottom: 1px solid #2d2d2d; }
+        .tab-btn { flex: 1; padding: 12px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #262626; }
         
-        /* 🎛️ スポナビ風のメニューボタン（タブ） */
-        .tab-menu { display: flex; justify-content: center; background: #1e1e1e; margin-bottom: 15px; }
-        .tab-btn { flex: 1; max-width: 200px; padding: 15px 0; background: #1e1e1e; color: #aaaaaa; border: none; font-size: 15px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; transition: 0.2s; }
-        .tab-btn:hover { color: #ffffff; }
-        /* 👇 今選ばれているボタンを黄色く光らせる設定 */
-        .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #252525; }
-        
-        /* 📦 データ表示枠の調整（スマホでもはみ出さないようにする） */
-        .wrapper { max-width: 900px; margin: 0 auto; padding: 0 10px; }
-        .widget-content { display: none; background: #1e1e1e; border-radius: 0 0 12px 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .widget-content.active { display: block; } /* 選ばれた方だけを表示 */
+        .wrapper { width: 100%; max-width: 600px; margin: 0 auto; box-sizing: border-box; }
+        .widget-content { display: none; width: 100%; height: calc(100vh - 100px); -webkit-overflow-scrolling: touch; }
+        .widget-content.active { display: block; }
+        iframe { width: 100%; height: 100%; border: none; background: #121212; }
     </style>
 </head>
 <body>
 
-    <!-- 🏠 タイトルエリア -->
     <div class="header">
         <h1>🇩🇰 デンマーク・スーペルリーガ</h1>
-        <p>2026年最新リアルタイムデータ部屋</p>
+        <p>2026年最新リアルタイム速報</p>
     </div>
 
-    <!-- 🎛️ スポナビ風の切り替えタブ -->
     <div class="tab-menu">
-        <button class="tab-btn active" onclick="switchTab('standings', this)">順位表</button>
-        <button class="tab-btn" onclick="switchTab('fixtures', this)">試合日程</button>
+        <button class="tab-btn active" onclick="switchTab('standings', this)">最新順位表</button>
+        <button class="tab-btn" onclick="switchTab('fixtures', this)">試合日程・結果</button>
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 順位表の部屋（最初から表示） -->
+        <!-- 🏆 スマホ専用に最適化された日本語順位表 -->
         <div id="standings" class="widget-content active">
-            <iframe src="https://livescore.cz" width="100%" height="700" frameborder="0" scrolling="auto"></iframe>
+            <iframe src="https://livescore.biz"></iframe>
         </div>
 
-        <!-- 📅 試合日程の部屋（最初は隠す） -->
+        <!-- 📅 スマホ専用に最適化された日本語日程表 -->
         <div id="fixtures" class="widget-content">
-            <iframe src="https://livescore.cz" width="100%" height="700" frameborder="0" scrolling="auto"></iframe>
+            <iframe src="https://livescore.biz"></iframe>
         </div>
     </div>
 
-    <!-- 🪄 ボタンを押したときに部屋を切り替える JavaScript（魔法の命令） -->
     <script>
         function switchTab(tabId, button) {
-            // すべての部屋をいったん非表示にする
             var contents = document.getElementsByClassName('widget-content');
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.remove('active');
-            }
-            // すべてのボタンの黄色い下線を消す
+            for (var i = 0; i < contents.length; i++) { contents[i].classList.remove('active'); }
             var buttons = document.getElementsByClassName('tab-btn');
-            for (var i = 0; i < buttons.length; i++) {
-                buttons[i].classList.remove('active');
-            }
-            // 押された部屋とボタンだけを有効化（表示）する
+            for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('active'); }
             document.getElementById(tabId).classList.add('active');
             button.classList.add('active');
         }
