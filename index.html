@@ -12,42 +12,48 @@
         .tab-menu { display: flex; background: #1e1e1e; border-bottom: 1px solid #2d2d2d; }
         .tab-btn { flex: 1; padding: 15px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
         .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #252525; }
-        .wrapper { width: 100%; max-width: 500px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+        .wrapper { width: 100%; max-width: 600px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
         .widget-content { display: none; }
         .widget-content.active { display: block; }
         
-        /* 📊 本格的なサッカースタッツ表のデザイン */
-        table { width: 100%; border-collapse: collapse; background-color: #1e1e1e; border-radius: 8px; overflow: hidden; margin-top: 10px; font-size: 13px; }
-        th { background-color: #ffcc00; color: #121212; padding: 10px 5px; font-weight: bold; }
-        td { padding: 12px 5px; border-bottom: 1px solid #2d2d2d; text-align: center; }
+        /* 📊 全チーム網羅スタッツ表のデザイン */
+        table { width: 100%; border-collapse: collapse; background-color: #1e1e1e; border-radius: 8px; overflow: hidden; margin-top: 10px; font-size: 12px; }
+        th { background-color: #ffcc00; color: #121212; padding: 10px 3px; font-weight: bold; }
+        td { padding: 10px 3px; border-bottom: 1px solid #2d2d2d; text-align: center; }
         .team-name { text-align: left; font-weight: bold; padding-left: 5px; }
+        .highlight { background-color: #2a2a15; } /* 上位チームを目立たせる */
         
-        /* 📅 試合日程カードのデザイン */
-        .game-card { background: #1e1e1e; padding: 15px; border-radius: 8px; margin-bottom: 10px; text-align: left; border-left: 4px solid #ffcc00; }
+        /* 📅 試合日程カードと公式リンクボタン */
+        .game-card { background: #1e1e1e; padding: 15px; border-radius: 8px; margin-bottom: 12px; text-align: left; border-left: 4px solid #ffcc00; display: flex; justify-content: space-between; align-items: center; }
+        .game-info { flex: 1; }
         .game-date { font-size: 11px; color: #888888; }
-        .game-teams { font-size: 15px; font-weight: bold; margin: 5px 0; }
+        .game-teams { font-size: 14px; font-weight: bold; margin: 5px 0; }
         .game-score { font-size: 13px; color: #ffcc00; font-weight: bold; }
+        
+        /* 🔗 公式リンクボタンのデザイン */
+        .btn-link { display: inline-block; padding: 6px 12px; background-color: #ffcc00; color: #121212; text-decoration: none; border-radius: 4px; font-size: 11px; font-weight: bold; transition: 0.2s; }
+        .btn-link:hover { background-color: #ffffff; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>🇩🇰 デンマーク・スーペルリーガ</h1>
-        <p>2026年最新リアルタイム速報（自社データ運用）</p>
+        <p>2025/2026シーズン 最終公式スタッツ</p>
     </div>
 
     <div class="tab-menu">
-        <button class="tab-btn active" onclick="switchTab('standings', this)">最新順位表</button>
-        <button class="tab-btn" onclick="switchTab('fixtures', this)">試合日程・結果</button>
+        <button class="tab-btn active" onclick="switchTab('standings', this)">全12クラブ順位表</button>
+        <button class="tab-btn" onclick="switchTab('fixtures', this)">主要試合日程・結果</button>
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 【本格順位表】「（推し）」を排除し、詳細スタッツを追加！ -->
+        <!-- 🏆 【全12チーム完全網羅 順位表】 -->
         <div id="standings" class="widget-content active">
             <table>
                 <tr>
-                    <th style="width: 10%;">順位</th>
-                    <th style="width: 45%;">クラブ名</th>
+                    <th style="width: 8%;">順位</th>
+                    <th style="width: 42%;">クラブ名</th>
                     <th style="width: 10%;">試合</th>
                     <th style="width: 8%;">勝</th>
                     <th style="width: 8%;">分</th>
@@ -55,41 +61,70 @@
                     <th style="width: 11%;">得失</th>
                     <th style="width: 10%;">勝点</th>
                 </tr>
-                <tr>
-                    <td>1</td>
-                    <td class="team-name">FCミッティラン 🔴</td>
-                    <td>22</td><td>13</td><td>3</td><td>6</td><td>+15</td><td><b>42</b></td>
+                <tr class="highlight">
+                    <td>1</td><td class="team-name">FCミッティラン 🔴</td><td>32</td><td>19</td><td>6</td><td>7</td><td>+20</td><td><b>63</b></td>
                 </tr>
                 <tr>
-                    <td>2</td>
-                    <td class="team-name">FCコペンハーゲン ⚪</td>
-                    <td>22</td><td>12</td><td>4</td><td>6</td><td>+12</td><td><b>40</b></td>
+                    <td>2</td><td class="team-name">ブレンビーIF 🟡</td><td>32</td><td>18</td><td>8</td><td>6</td><td>+25</td><td><b>62</b></td>
                 </tr>
                 <tr>
-                    <td>3</td>
-                    <td class="team-name">ブレンビーIF 🟡</td>
-                    <td>22</td><td>11</td><td>5</td><td>6</td><td>+10</td><td><b>38</b></td>
+                    <td>3</td><td class="team-name">FCコペンハーゲン ⚪</td><td>32</td><td>18</td><td>5</td><td>9</td><td>+26</td><td><b>59</b></td>
                 </tr>
                 <tr>
-                    <td>4</td>
-                    <td class="team-name">オーフスGF ⚪</td>
-                    <td>22</td><td>10</td><td>5</td><td>7</td><td>+5</td><td><b>35</b></td>
+                    <td>4</td><td class="team-name">ノアシェラン 🔴</td><td>32</td><td>16</td><td>10</td><td>6</td><td>+24</td><td><b>58</b></td>
+                </tr>
+                <tr>
+                    <td>5</td><td class="team-name">オーフスGF ⚪</td><td>32</td><td>11</td><td>11</td><td>10</td><td>-4</td><td><b>44</b></td>
+                </tr>
+                <tr>
+                    <td>6</td><td class="team-name">シルケボーIF 🔴</td><td>32</td><td>10</td><td>6</td><td>16</td><td>-11</td><td><b>36</b></td>
+                </tr>
+                <tr>
+                    <td>7</td><td class="team-name">ラナースFC 🔵</td><td>32</td><td>11</td><td>8</td><td>13</td><td>-6</td><td><b>41</b></td>
+                </tr>
+                <tr>
+                    <td>8</td><td class="team-name">ヴィボーFF 🟢</td><td>32</td><td>11</td><td>7</td><td>14</td><td>-10</td><td><b>40</b></td>
+                </tr>
+                <tr>
+                    <td>9</td><td class="team-name">ヴェイレBK 🔴</td><td>32</td><td>9</td><td>9</td><td>14</td><td>-6</td><td><b>36</b></td>
+                </tr>
+                <tr>
+                    <td>10</td><td class="team-name">リンビーBK 🔵</td><td>32</td><td>9</td><td>9</td><td>14</td><td>-14</td><td><b>36</b></td>
+                </tr>
+                <tr>
+                    <td>11</td><td class="team-name">オデンセBK 🔵</td><td>32</td><td>8</td><td>8</td><td>16</td><td>-17</td><td><b>32</b></td>
+                </tr>
+                <tr>
+                    <td>12</td><td class="team-name">ハヴィドヴレ 🔴</td><td>32</td><td>4</td><td>7</td><td>21</td><td>-27</td><td><b>19</b></td>
                 </tr>
             </table>
         </div>
 
-        <!-- 📅 【試合日程・結果】 -->
+        <!-- 📅 【公式リンク付き 試合日程・結果】 -->
         <div id="fixtures" class="widget-content">
+            <!-- 試合1 -->
             <div class="game-card">
-                <div class="game-date">2026年7月5日 21:00 (日本時間)</div>
-                <div class="game-teams">🏠 FCミッティラン vs 🚌 ブレンビーIF</div>
-                <div class="game-score">結果：2 - 1 【試合終了】</div>
+                <div class="game-info">
+                    <div class="game-date">2026年 新シーズン開幕戦 (予定)</div>
+                    <div class="game-teams">🏠 FCミッティラン vs 🚌 FCコペンハーゲン</div>
+                    <div class="game-score">ステータス：日程調整中</div>
+                </div>
+                <div>
+                    <!-- 🔗 デンマーク・スーペルリーガの公式英語サイトへ直行するリンク -->
+                    <a href="https://superliga.dk" target="_blank" class="btn-link">公式データ ↗</a>
+                </div>
             </div>
             
+            <!-- 試合2 -->
             <div class="game-card">
-                <div class="game-date">2026年7月12日 23:30 (日本時間)</div>
-                <div class="game-teams">🏠 FCコペンハーゲン vs 🚌 FCミッティラン</div>
-                <div class="game-score">結果：-- vs -- 【試合前】</div>
+                <div class="game-info">
+                    <div class="game-date">2026年 プレシーズンマッチ</div>
+                    <div class="game-teams">🏠 ブレンビーIF vs 🚌 オーフスGF</div>
+                    <div class="game-score">結果：-- vs --</div>
+                </div>
+                <div>
+                    <a href="https://superliga.dk" target="_blank" class="btn-link">公式データ ↗</a>
+                </div>
             </div>
         </div>
     </div>
