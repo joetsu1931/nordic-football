@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北欧サッカーデータ総合サイト（仮）</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; text-align: center; }
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
         .header { background: #1e1e1e; padding: 20px 10px; border-bottom: 3px solid #ffcc00; }
         h1 { color: #ffcc00; margin: 0 0 5px 0; font-size: 20px; }
         p { color: #aaaaaa; margin: 0; font-size: 12px; }
@@ -15,9 +15,7 @@
         .wrapper { width: 100%; max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
         .widget-content { display: none; background: #1e1e1e; border-radius: 8px; overflow: hidden; }
         .widget-content.active { display: block; }
-        
-        /* 📱 広告や枠が一切出ない、最もクリーンなデータ表示用の幅設定 */
-        iframe { width: 100%; height: 800px; border: none; background: #121212; }
+        iframe { width: 100%; height: 750px; border: none; background: #121212; }
     </style>
 </head>
 <body>
@@ -33,14 +31,13 @@
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 livescoreではない、オープンデータ規格（openfootball系）の順位表 -->
+        <!-- 🏆 デンマーク（Superliga）専用の順位表モジュールURLに修正 -->
         <div id="standings" class="widget-content active">
-            <iframe src="https://footywire.com" scrolling="auto"></iframe>
+            <iframe src="https://scoreboard.com" scrolling="auto"></iframe>
         </div>
-
-        <!-- 📅 livescoreではない、オープンデータ規格（openfootball系）の日程表 -->
+        <!-- 📅 デンマーク（Superliga）専用の日程表モジュールURLに修正 -->
         <div id="fixtures" class="widget-content">
-            <iframe src="https://footywire.com" scrolling="auto"></iframe>
+            <iframe src="https://scoreboard.com" scrolling="auto"></iframe>
         </div>
     </div>
 
