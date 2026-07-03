@@ -12,17 +12,25 @@
         .tab-menu { display: flex; background: #1e1e1e; border-bottom: 1px solid #2d2d2d; }
         .tab-btn { flex: 1; padding: 15px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
         .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #252525; }
-        .wrapper { width: 100%; max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
-        .widget-content { display: none; background: #1e1e1e; border-radius: 8px; overflow: hidden; }
+        .wrapper { width: 100%; max-width: 500px; margin: 0 auto; padding: 15px; box-sizing: border-box; }
+        .widget-content { display: none; }
         .widget-content.active { display: block; }
-        iframe { width: 100%; height: 750px; border: none; background: #121212; }
+        
+        /* 📊 超見やすい脳筋テーブル（表）のデザイン */
+        table { width: 100%; border-collapse: collapse; background-color: #1e1e1e; border-radius: 8px; overflow: hidden; margin-top: 10px; }
+        th { background-color: #ffcc00; color: #121212; padding: 12px; font-weight: bold; font-size: 14px; }
+        td { padding: 12px; border-bottom: 1px solid #2d2d2d; font-size: 14px; text-align: center; }
+        .game-card { background: #1e1e1e; padding: 15px; border-radius: 8px; margin-bottom: 10px; text-align: left; border-left: 4px solid #ffcc00; }
+        .game-date { font-size: 12px; color: #888888; }
+        .game-teams { font-size: 15px; font-weight: bold; margin: 5px 0; }
+        .game-score { font-size: 14px; color: #ffcc00; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>🇩🇰 デンマーク・スーペルリーガ</h1>
-        <p>2026年最新リアルタイムデータ部屋</p>
+        <p>2026年最新リアルタイム速報（自社データ運用）</p>
     </div>
 
     <div class="tab-menu">
@@ -31,13 +39,50 @@
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 デンマーク（Superliga）専用の順位表モジュールURLに修正 -->
+        <!-- 🏆 【最新順位表】ここをあなたが書き換えるだけでサイトが即更新されます！ -->
         <div id="standings" class="widget-content active">
-            <iframe src="https://scoreboard.com" scrolling="auto"></iframe>
+            <table>
+                <tr>
+                    <th>順位</th>
+                    <th>クラブ名</th>
+                    <th>勝点</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>FCミッティラン 🔴 (推し)</td>
+                    <td>42</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>FCコペンハーゲン ⚪</td>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>ブレンビーIF 🟡</td>
+                    <td>38</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>オーフスGF ⚪</td>
+                    <td>35</td>
+                </tr>
+            </table>
         </div>
-        <!-- 📅 デンマーク（Superliga）専用の日程表モジュールURLに修正 -->
+
+        <!-- 📅 【試合日程・結果】ここも文字を変えるだけで100%日本語で反映！ -->
         <div id="fixtures" class="widget-content">
-            <iframe src="https://scoreboard.com" scrolling="auto"></iframe>
+            <div class="game-card">
+                <div class="game-date">2026年7月5日 21:00 (日本時間)</div>
+                <div class="game-teams">🏠 FCミッティラン vs 🚌 ブレンビーIF</div>
+                <div class="game-score">結果：2 - 1 【試合終了】</div>
+            </div>
+            
+            <div class="game-card">
+                <div class="game-date">2026年7月12日 23:30 (日本時間)</div>
+                <div class="game-teams">🏠 FCコペンハーゲン vs 🚌 FCミッティラン</div>
+                <div class="game-score">結果：-- vs -- 【試合前】</div>
+            </div>
         </div>
     </div>
 
