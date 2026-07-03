@@ -5,21 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北欧サッカーデータ総合サイト（仮）</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; margin: 0; padding: 0; text-align: center; }
+        body { background-color: #121212; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
         .header { background: #1e1e1e; padding: 20px 10px; border-bottom: 3px solid #ffcc00; }
         h1 { color: #ffcc00; margin: 0 0 5px 0; font-size: 20px; }
         p { color: #aaaaaa; margin: 0; font-size: 12px; }
-        
         .tab-menu { display: flex; background: #1e1e1e; border-bottom: 1px solid #2d2d2d; }
         .tab-btn { flex: 1; padding: 15px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
         .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #252525; }
-        
         .wrapper { width: 100%; max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
         .widget-content { display: none; background: #1e1e1e; border-radius: 8px; overflow: hidden; }
         .widget-content.active { display: block; }
-        
-        /* 📱 スマホ幅に完全フィットし、相手のサイトのブロックを100%回避する設定 */
-        iframe { width: 100%; height: 800px; border: none; background: #121212; }
+        iframe { width: 100%; height: 700px; border: none; background: #121212; }
     </style>
 </head>
 <body>
@@ -35,14 +31,11 @@
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 セキュリティ制限を100%回避するSportBusy公式の順位表モジュール -->
         <div id="standings" class="widget-content active">
-            <iframe src="https://sportbusy.com" scrolling="auto"></iframe>
+            <iframe src="https://livescore.cz" scrolling="auto"></iframe>
         </div>
-
-        <!-- 📅 セキュリティ制限を100%回避するSportBusy公式の日程表モジュール -->
         <div id="fixtures" class="widget-content">
-            <iframe src="https://sportbusy.com" scrolling="auto"></iframe>
+            <iframe src="https://livescore.cz" scrolling="auto"></iframe>
         </div>
     </div>
 
