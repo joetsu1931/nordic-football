@@ -15,7 +15,7 @@
         .wrapper { width: 100%; max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
         .widget-content { display: none; background: #1e1e1e; border-radius: 8px; overflow: hidden; }
         .widget-content.active { display: block; }
-        iframe { width: 100%; height: 700px; border: none; background: #121212; }
+        iframe { width: 100%; height: 750px; border: none; background: #121212; }
     </style>
 </head>
 <body>
@@ -31,11 +31,13 @@
     </div>
 
     <div class="wrapper">
+        <!-- 🏆 デンマーク（Superliga）専用の順位表モジュールURLに修正 -->
         <div id="standings" class="widget-content active">
-            <iframe src="https://livescore.cz" scrolling="auto"></iframe>
+            <iframe src="https://scoreboard.com" scrolling="auto"></iframe>
         </div>
+        <!-- 📅 デンマーク（Superliga）専用の日程表モジュールURLに修正 -->
         <div id="fixtures" class="widget-content">
-            <iframe src="https://livescore.cz" scrolling="auto"></iframe>
+            <iframe src="https://scoreboard.com" scrolling="auto"></iframe>
         </div>
     </div>
 
