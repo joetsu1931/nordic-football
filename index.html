@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北欧サッカーデータ総合サイト（仮）</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: sans-serif; margin: 0; padding: 0; text-align: center; }
+        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; text-align: center; }
         .header { background: #1e1e1e; padding: 20px 10px; border-bottom: 3px solid #ffcc00; }
-        h1 { color: #ffcc00; margin: 0 0 5px 0; font-size: 20px; }
+        h1 { color: #ffcc00; margin: 0 0 5px 0; font-size: 20px; font-weight: bold; }
         p { color: #aaaaaa; margin: 0; font-size: 12px; }
         .tab-menu { display: flex; background: #1e1e1e; border-bottom: 1px solid #2d2d2d; }
         .tab-btn { flex: 1; padding: 15px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
@@ -16,14 +16,17 @@
         .widget-content { display: none; }
         .widget-content.active { display: block; }
         
-        /* 📊 超見やすい脳筋テーブル（表）のデザイン */
-        table { width: 100%; border-collapse: collapse; background-color: #1e1e1e; border-radius: 8px; overflow: hidden; margin-top: 10px; }
-        th { background-color: #ffcc00; color: #121212; padding: 12px; font-weight: bold; font-size: 14px; }
-        td { padding: 12px; border-bottom: 1px solid #2d2d2d; font-size: 14px; text-align: center; }
+        /* 📊 本格的なサッカースタッツ表のデザイン */
+        table { width: 100%; border-collapse: collapse; background-color: #1e1e1e; border-radius: 8px; overflow: hidden; margin-top: 10px; font-size: 13px; }
+        th { background-color: #ffcc00; color: #121212; padding: 10px 5px; font-weight: bold; }
+        td { padding: 12px 5px; border-bottom: 1px solid #2d2d2d; text-align: center; }
+        .team-name { text-align: left; font-weight: bold; padding-left: 5px; }
+        
+        /* 📅 試合日程カードのデザイン */
         .game-card { background: #1e1e1e; padding: 15px; border-radius: 8px; margin-bottom: 10px; text-align: left; border-left: 4px solid #ffcc00; }
-        .game-date { font-size: 12px; color: #888888; }
+        .game-date { font-size: 11px; color: #888888; }
         .game-teams { font-size: 15px; font-weight: bold; margin: 5px 0; }
-        .game-score { font-size: 14px; color: #ffcc00; }
+        .game-score { font-size: 13px; color: #ffcc00; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -39,38 +42,43 @@
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 【最新順位表】ここをあなたが書き換えるだけでサイトが即更新されます！ -->
+        <!-- 🏆 【本格順位表】「（推し）」を排除し、詳細スタッツを追加！ -->
         <div id="standings" class="widget-content active">
             <table>
                 <tr>
-                    <th>順位</th>
-                    <th>クラブ名</th>
-                    <th>勝点</th>
+                    <th style="width: 10%;">順位</th>
+                    <th style="width: 45%;">クラブ名</th>
+                    <th style="width: 10%;">試合</th>
+                    <th style="width: 8%;">勝</th>
+                    <th style="width: 8%;">分</th>
+                    <th style="width: 8%;">敗</th>
+                    <th style="width: 11%;">得失</th>
+                    <th style="width: 10%;">勝点</th>
                 </tr>
                 <tr>
                     <td>1</td>
-                    <td>FCミッティラン 🔴 (推し)</td>
-                    <td>42</td>
+                    <td class="team-name">FCミッティラン 🔴</td>
+                    <td>22</td><td>13</td><td>3</td><td>6</td><td>+15</td><td><b>42</b></td>
                 </tr>
                 <tr>
                     <td>2</td>
-                    <td>FCコペンハーゲン ⚪</td>
-                    <td>40</td>
+                    <td class="team-name">FCコペンハーゲン ⚪</td>
+                    <td>22</td><td>12</td><td>4</td><td>6</td><td>+12</td><td><b>40</b></td>
                 </tr>
                 <tr>
                     <td>3</td>
-                    <td>ブレンビーIF 🟡</td>
-                    <td>38</td>
+                    <td class="team-name">ブレンビーIF 🟡</td>
+                    <td>22</td><td>11</td><td>5</td><td>6</td><td>+10</td><td><b>38</b></td>
                 </tr>
                 <tr>
                     <td>4</td>
-                    <td>オーフスGF ⚪</td>
-                    <td>35</td>
+                    <td class="team-name">オーフスGF ⚪</td>
+                    <td>22</td><td>10</td><td>5</td><td>7</td><td>+5</td><td><b>35</b></td>
                 </tr>
             </table>
         </div>
 
-        <!-- 📅 【試合日程・結果】ここも文字を変えるだけで100%日本語で反映！ -->
+        <!-- 📅 【試合日程・結果】 -->
         <div id="fixtures" class="widget-content">
             <div class="game-card">
                 <div class="game-date">2026年7月5日 21:00 (日本時間)</div>
