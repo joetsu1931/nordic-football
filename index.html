@@ -2,47 +2,54 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北欧サッカーデータ総合サイト（仮）</title>
     <style>
-        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Hiragino Kaku Gothic ProN, subaru, sans-serif; margin: 0; padding: 0; }
-        .header { background: #1f1f1f; padding: 15px 10px; text-align: center; border-bottom: 2px solid #ffcc00; }
-        h1 { color: #ffcc00; margin: 0; font-size: 18px; font-weight: bold; }
-        p { color: #888888; margin: 3px 0 0 0; font-size: 11px; }
+        /* 画面全体のシンプルな黒基調ベース */
+        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; margin: 0; padding: 0; }
         
-        .tab-menu { display: flex; background: #1f1f1f; border-bottom: 1px solid #2d2d2d; }
-        .tab-btn { flex: 1; padding: 12px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
-        .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #262626; }
+        /* タイトルエリア */
+        .header { background: #1e1e1e; padding: 20px 10px; text-align: center; border-bottom: 3px solid #ffcc00; }
+        h1 { color: #ffcc00; margin: 0 0 5px 0; font-size: 20px; }
+        p { color: #aaaaaa; margin: 0; font-size: 12px; }
         
-        .wrapper { width: 100%; max-width: 600px; margin: 0 auto; box-sizing: border-box; }
-        .widget-content { display: none; width: 100%; height: calc(100vh - 100px); -webkit-overflow-scrolling: touch; }
+        /* タブ切り替えボタン */
+        .tab-menu { display: flex; background: #1e1e1e; border-bottom: 1px solid #2d2d2d; }
+        .tab-btn { flex: 1; padding: 15px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
+        .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #252525; }
+        
+        /* コンテンツ枠の調整（枠線をなくして一体化させる） */
+        .wrapper { width: 100%; max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
+        .widget-content { display: none; }
         .widget-content.active { display: block; }
-        iframe { width: 100%; height: 100%; border: none; background: #121212; }
     </style>
 </head>
 <body>
 
     <div class="header">
         <h1>🇩🇰 デンマーク・スーペルリーガ</h1>
-        <p>2026年最新リアルタイム速報</p>
+        <p>2026年最新リアルタイムデータ部屋</p>
     </div>
 
     <div class="tab-menu">
-        <button class="tab-btn active" onclick="switchTab('standings', this)">最新順位表</button>
+        <button class="tab-btn active" onclick="switchTab('standings', this)">順位表</button>
         <button class="tab-btn" onclick="switchTab('fixtures', this)">試合日程・結果</button>
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 スマホ専用に最適化された日本語順位表 -->
+        <!-- 🏆 枠なし・自動幅調整の最新順位表 -->
         <div id="standings" class="widget-content active">
-            <iframe src="https://livescore.biz"></iframe>
+            <div id="scoreaxis-widget-league-standings" data-league-id="12" data-theme="dark" data-results-per-page="12"></div>
         </div>
 
-        <!-- 📅 スマホ専用に最適化された日本語日程表 -->
+        <!-- 📅 枠なし・自動幅調整の最新試合日程 -->
         <div id="fixtures" class="widget-content">
-            <iframe src="https://livescore.biz"></iframe>
+            <div id="scoreaxis-widget-league-fixtures" data-league-id="12" data-theme="dark" data-fixtures-count="10"></div>
         </div>
     </div>
+
+    <!-- 🪄 データを動かす魔法のスクリプト（ドメイン登録不要の軽量版） -->
+    <script src="https://scoreaxis.com"></script>
 
     <script>
         function switchTab(tabId, button) {
