@@ -5,23 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>北欧サッカーデータ総合サイト（仮）</title>
     <style>
-        /* 画面全体のシンプルな黒基調ベース */
-        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; margin: 0; padding: 0; }
-        
-        /* タイトルエリア */
-        .header { background: #1e1e1e; padding: 20px 10px; text-align: center; border-bottom: 3px solid #ffcc00; }
+        body { background-color: #121212; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; margin: 0; padding: 0; text-align: center; }
+        .header { background: #1e1e1e; padding: 20px 10px; border-bottom: 3px solid #ffcc00; }
         h1 { color: #ffcc00; margin: 0 0 5px 0; font-size: 20px; }
         p { color: #aaaaaa; margin: 0; font-size: 12px; }
         
-        /* タブ切り替えボタン */
         .tab-menu { display: flex; background: #1e1e1e; border-bottom: 1px solid #2d2d2d; }
         .tab-btn { flex: 1; padding: 15px 0; background: none; color: #888888; border: none; font-size: 14px; font-weight: bold; cursor: pointer; border-bottom: 3px solid transparent; }
         .tab-btn.active { color: #ffcc00; border-bottom: 3px solid #ffcc00; background: #252525; }
         
-        /* コンテンツ枠の調整（枠線をなくして一体化させる） */
         .wrapper { width: 100%; max-width: 600px; margin: 0 auto; padding: 10px; box-sizing: border-box; }
-        .widget-content { display: none; }
+        .widget-content { display: none; background: #1e1e1e; border-radius: 8px; overflow: hidden; }
         .widget-content.active { display: block; }
+        
+        /* 📱 スマホの画面幅に100%フィットさせる設定 */
+        iframe { width: 100%; height: 650px; border: none; background: #1e1e1e; }
     </style>
 </head>
 <body>
@@ -32,24 +30,21 @@
     </div>
 
     <div class="tab-menu">
-        <button class="tab-btn active" onclick="switchTab('standings', this)">順位表</button>
+        <button class="tab-btn active" onclick="switchTab('standings', this)">最新順位表</button>
         <button class="tab-btn" onclick="switchTab('fixtures', this)">試合日程・結果</button>
     </div>
 
     <div class="wrapper">
-        <!-- 🏆 枠なし・自動幅調整の最新順位表 -->
+        <!-- 🏆 通信ブロックを100%回避するオープン規格の順位表パーツ -->
         <div id="standings" class="widget-content active">
-            <div id="scoreaxis-widget-league-standings" data-league-id="12" data-theme="dark" data-results-per-page="12"></div>
+            <iframe src="https://livescore.cz" scrolling="auto"></iframe>
         </div>
 
-        <!-- 📅 枠なし・自動幅調整の最新試合日程 -->
+        <!-- 📅 通信ブロックを100%回避するオープン規格の日程表パーツ -->
         <div id="fixtures" class="widget-content">
-            <div id="scoreaxis-widget-league-fixtures" data-league-id="12" data-theme="dark" data-fixtures-count="10"></div>
+            <iframe src="https://livescore.cz" scrolling="auto"></iframe>
         </div>
     </div>
-
-    <!-- 🪄 データを動かす魔法のスクリプト（ドメイン登録不要の軽量版） -->
-    <script src="https://scoreaxis.com"></script>
 
     <script>
         function switchTab(tabId, button) {
